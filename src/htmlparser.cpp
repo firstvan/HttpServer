@@ -1,4 +1,4 @@
-#include "htmlparser.h"
+#include "../include/htmlparser.h"
 
 Parser::Parser()
 {
@@ -74,4 +74,47 @@ bool Parser::parseImage(std::string &filename, QByteArray &image)
     img.save(&buffer, "JPG");
 
     return true;
+}
+
+std::string Parser::OK(std::string filename, Template* t)
+{
+    auto name = ":/view/" + filename;
+    QFile file(QString::fromStdString(name));
+    if(!file.open(QIODevice::ReadOnly))
+        return "";
+
+    std::stringstream ss;
+
+    QTextStream in(&file);
+    while(!in.atEnd())
+    {
+        QString line = in.readLine();
+        int item = line.indexOf("@{");
+
+        while( item != -1)
+        {
+            ss << line.left(item - 1).toStdString();
+            line = line.remove(0, item - 1);
+            auto brace = line.indexOf("}");
+
+            auto variable = line.mid(3, brace - 3);
+
+            line = line.remove(0, brace + 1);
+
+            QStringList ls = variable.split('.');
+
+            if(t->GetName() == ls.at(0).toStdString())
+            {
+                ss << t->GetTags()[ls.at(1).toStdString()];
+            }
+
+            item = line.indexOf("@{");
+        }
+
+        ss << line.toStdString();
+    }
+
+    file.close();
+
+    return ss.str();
 }

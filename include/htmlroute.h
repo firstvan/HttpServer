@@ -8,6 +8,7 @@
 #include <exception>
 
 #include <iostream>
+#include "dog.h"
 
 typedef std::string (*ServeFunction)(void);
 
@@ -17,6 +18,7 @@ public:
     HtmlRoute();
 
     bool Register(std::string path, ServeFunction function);
+
 
     ServeFunction GetFunction(std::string path);
 

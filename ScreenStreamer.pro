@@ -18,14 +18,17 @@ SOURCES += src/htmlparser.cpp \
     src/htmlserve.cpp \
     src/httpserver.cpp \
     src/main.cpp \
-    src/mainwindow.cpp
+    src/mainwindow.cpp \
+    src/dog.cpp
 
 HEADERS  += include/mainwindow.h \
     include/httpserver.h \
     include/httpdefine.h \
     include/htmlserve.h \
     include/htmlroute.h \
-    include/htmlparser.h
+    include/htmlparser.h \
+    include/template.h \
+    include/dog.h
 
 FORMS    += mainwindow.ui
 

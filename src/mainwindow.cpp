@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "../include/mainwindow.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -9,8 +9,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     route.Register("/", HtmlServe::index);
     route.Register("/second", HtmlServe::second);
+    route.Register("/dogs", HtmlServe::dogs);
 
     _httpServer = new HttpServer(route);
+
 }
 
 MainWindow::~MainWindow()

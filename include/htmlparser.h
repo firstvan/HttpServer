@@ -7,6 +7,9 @@
 #include <QBuffer>
 #include <vector>
 #include <QUrl>
+#include <QTextStream>
+
+#include "template.h"
 
 class Parser
 {
@@ -22,5 +25,7 @@ public:
     static std::string parseStringFiles(std::string filename);
 
     static bool parseImage(std::string &filename, QByteArray &image);
+
+    static std::string OK(std::string filename, Template* t);
 };
 

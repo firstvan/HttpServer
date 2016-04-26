@@ -4,6 +4,7 @@
 #include "httpserver.h"
 #include "htmlroute.h"
 #include "htmlserve.h"
+#include "dog.h"
 
 namespace Ui {
 class MainWindow;

@@ -6,5 +6,6 @@
         <file>Resources/javascript/index.js</file>
         <file>Resources/css/main.css</file>
         <file>view/second.html</file>
+        <file>view/dogs.html</file>
     </qresource>
 </RCC>
